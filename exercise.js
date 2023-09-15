@@ -1,18 +1,21 @@
 const isLogged = true;
 
-let promise = new Promise((resolve, reject) => {
-    if(isLogged) {
-        resolve(num = Math.random());
-    } else reject(new Error('isLogged is false.'));
-})
+//Ho risolto l'esercio inserndo le promise in due funzioni in modo tale da poter inserire i parametri nell esecuzione, ma non sono sicuro sia lo svolgimento corretto.
 
-let promise2 = new Promise((resolve, reject) => {
-    if(num > 0.5) {
-        resolve({name: "John", age: 24});
-    } else reject(new Error ('The number is less than 0.5.'));
-})
+function checkLogin(log) {
+    return new Promise((resolve, reject) => {
+        if(log) {
+            resolve (num = Math.random());
+        } else reject(console.error('The variable is false'));
+    })
+}
 
-// console.log(promise);
-// console.log(promise2);
+function checkNum(num) {
+    return new Promise((resolve, reject) => {
+        if(num > 0.5) {
+            resolve({name: "John", age: 24});
+        } else reject(console.error('The number is less than 0.5.'));
+    })
+}
 
-promise.then(() => console.log(promise)).then(() => console.log(promise2));
+checkLogin(isLogged).then((num) => console.log(checkNum(num)));
